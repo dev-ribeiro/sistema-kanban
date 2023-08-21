@@ -68,7 +68,6 @@ public class Kanban {
 
   public void updateTaskStatus(Integer id, Status newStatus) {
     Integer currentTaskSize = this.tasks.size();
-    System.out.println(currentTaskSize > id);
 
     if (id > currentTaskSize || id < 1) {
       System.out.println("ID NÃO CADASTRADO");
