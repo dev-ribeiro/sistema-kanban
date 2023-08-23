@@ -23,47 +23,25 @@ public class Kanban {
     this.tasks.add(register);
   }
 
-  public void listAllTasks() {
-    for (Task task : this.tasks) {
-      System.out.println("=====================");
-      System.out.println(task.getId());
-      System.out.println(task.getName());
-      System.out.println(task.getStatus());
-    }
+  public List<Task> listAllTasks() {
+    return this.tasks;
+
   }
 
-  public void getTaskById(Integer id) {
+  public List<Task> getTaskById(Integer id) {
     List<Task> filteredTasks = this.tasks.stream()
         .filter(task -> task.getId() == id)
         .collect(Collectors.toList());
 
-    if (filteredTasks.size() == 0) {
-      System.out.println("ID NÃO ENCONTRADO");
-    } else {
-      for (Task task : filteredTasks) {
-        System.out.println("=====================");
-        System.out.println(task.getId());
-        System.out.println(task.getName());
-        System.out.println(task.getStatus());
-      }
-    }
+    return filteredTasks;
   }
 
-  public void getTasksByStatus(Status filter) {
+  public List<Task> getTasksByStatus(Status filter) {
     List<Task> filteredTasks = this.tasks.stream()
         .filter(task -> task.getStatus() == filter)
         .collect(Collectors.toList());
 
-    if (filteredTasks.size() == 0) {
-      System.out.println("NÃO TAREFAS CADASTRADAS NESSA COM ESSE STATUS");
-    } else {
-      for (Task task : filteredTasks) {
-        System.out.println("=====================");
-        System.out.println(task.getId());
-        System.out.println(task.getName());
-        System.out.println(task.getStatus());
-      }
-    }
+    return filteredTasks;
   }
 
   public void updateTaskStatus(Integer id, Status newStatus) {
